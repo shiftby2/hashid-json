@@ -1,0 +1,38 @@
+Attempts to determine which hashing algorithm was used for a hash, using a JSON database of tests.
+
+usage: hashid-json.py [-h] [-i INPUT] [-t TESTS] [-o OUTPUT]
+
+arguments:
+  -i INPUT, --input INPUT
+                        the hash, or a file containing whitespace-separated
+                        hashes.
+  -t TESTS, --tests TESTS
+                        the tests to try.
+  -o OUTPUT, --output OUTPUT
+                        output results to this file (prints to screen by
+                        default)
+						
+syntax of a test:
+
+  "name":
+                        required field: the name of the algorithm
+  "length":
+                        int: number of characters in the hash.
+  "lower":
+                        boolean: whether the hash contains lowercase letters
+  "upper":
+                        boolean: whether the hash contains uppercase letters
+  "letters":
+                        boolean: whether the hash contains lowercase letters
+  "numbers":
+                        boolean: whether the hash contains lowercase letters
+  "symbols":
+                        boolean: whether the hash contains lowercase letters
+  "eval":
+                        list of strings: a list of Python expressions to validate
+						against the string input_hash.
+  
+example:
+  {"name": "CRC16-EX", "length": 4, "letters": false, "eval": ["'4' in input_hash", "'9' in input_hash"]}
+                        match hashes with 4 characters, no letters, and the characters '4' and '9'
+						to the hash type "CRC16-EX".

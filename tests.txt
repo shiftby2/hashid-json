@@ -1,1 +1,1 @@
-{"name": "CRC16", "length": 4, "letters": false, "eval": ["'4' in input_hash"]}
+{"name": "CRC16", "length": 4, "letters": false}
